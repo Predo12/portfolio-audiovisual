@@ -10,8 +10,8 @@ function ProjectModal({ project, close }: { project: Project; close: () => void 
   return <div className="modal" role="dialog" aria-modal="true" onClick={close}>
     <div className="modal-card" onClick={(e) => e.stopPropagation()}>
       <button className="modal-close" onClick={close} aria-label="Fechar"><X size={21}/></button>
-      <div className="modal-media" style={{ background: project.cover }}>
-        {project.media && project.format === "video" ? <video src={project.media} controls autoPlay /> :
+      <div className={`modal-media ${project.orientation === "portrait" ? "is-portrait" : "is-landscape"}`} style={{ background: project.cover }}>
+        {project.media && project.format === "video" ? <video src={project.media} poster={project.poster} controls autoPlay playsInline /> :
           project.media && project.format === "image" ? <img src={project.media} alt={project.title}/> :
           <div className="empty-media"><span>{project.format === "video" ? "COLE O LINK DO VÍDEO" : "COLE O LINK DA PEÇA"}</span><small>em app/content.ts</small></div>}
       </div>
@@ -56,8 +56,10 @@ export default function Home() {
     <section id="trabalhos" className="work section-pad">
       <div className="section-head"><p>TRABALHOS SELECIONADOS</p><h2>Imagem bonita chama atenção.<br/><em>Ideia boa segura.</em></h2></div>
       <div className="filters">{filters.map(f => <button className={filter === f ? "active" : ""} key={f} onClick={() => setFilter(f)}>{f}</button>)}</div>
-      <div className="project-grid">{visible.map((p, i) => <article className={`project-card card-${i % 3}`} key={p.title} onClick={() => setSelected(p)}>
+      <div className="project-grid">{visible.map((p, i) => <article className={`project-card ${p.orientation === "portrait" ? "is-portrait" : "is-landscape"}`} key={p.title} onClick={() => setSelected(p)}>
         <div className="project-visual" style={{ background: p.cover }}>
+          {p.media && p.format === "video" && <video className="project-preview" src={p.media} poster={p.poster} muted playsInline preload="metadata" />}
+          {p.media && p.format === "image" && <img className="project-preview" src={p.media} alt="" />}
           <span className="project-index">0{i+1}</span><span className="project-tag">{p.tag}</span>
           <div className="project-play">{p.format === "video" ? <Play fill="currentColor"/> : <ArrowUpRight/>}</div>
         </div>

@@ -27,7 +27,27 @@ export const projects: Project[] = [
     category: "Gastronomia",
     format: "video",
     cover: "linear-gradient(135deg, #6f2218, #d97745 55%, #f6c07c)",
-    media: "D:\Pedro\Projetos\portfolio-audiovisual\public\Videos",
+    media: "/Videos/restaurante-01.mp4",
+    description: "Filme vertical com foco na experiência, textura dos pratos e atmosfera da casa.",
+    tag: "REEL · 00:28"
+  },
+  {
+    title: "Sabor em movimento",
+    client: "Restaurante / substitua o nome",
+    category: "Gastronomia",
+    format: "video",
+    cover: "linear-gradient(135deg, #6f2218, #d97745 55%, #f6c07c)",
+    media: "/Videos/restaurante-02.mp4",
+    description: "Filme vertical com foco na experiência, textura dos pratos e atmosfera da casa.",
+    tag: "REEL · 00:28"
+  },
+  {
+    title: "Sabor em movimento",
+    client: "Restaurante / substitua o nome",
+    category: "Gastronomia",
+    format: "video",
+    cover: "linear-gradient(135deg, #6f2218, #d97745 55%, #f6c07c)",
+    media: "/Videos/restaurante-03.mp4",
     description: "Filme vertical com foco na experiência, textura dos pratos e atmosfera da casa.",
     tag: "REEL · 00:28"
   },

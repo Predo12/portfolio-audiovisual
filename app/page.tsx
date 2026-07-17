@@ -7,12 +7,22 @@ import { graphicArts, projects, site, type Project } from "./content";
 const filters = ["Todos", "Gastronomia", "Imobiliário", "Saúde", "Design", "Eventos"];
 
 function ProjectModal({ project, close }: { project: Project; close: () => void }) {
+  const [mediaOrientation, setMediaOrientation] = useState<"portrait" | "landscape">(
+    project.orientation === "portrait" ? "portrait" : "landscape"
+  );
+  const detectVideoSize = (video: HTMLVideoElement) => {
+    setMediaOrientation(video.videoHeight > video.videoWidth ? "portrait" : "landscape");
+  };
+  const detectImageSize = (image: HTMLImageElement) => {
+    setMediaOrientation(image.naturalHeight > image.naturalWidth ? "portrait" : "landscape");
+  };
+
   return <div className="modal" role="dialog" aria-modal="true" onClick={close}>
-    <div className="modal-card" onClick={(e) => e.stopPropagation()}>
+    <div className={`modal-card is-${mediaOrientation}`} onClick={(e) => e.stopPropagation()}>
       <button className="modal-close" onClick={close} aria-label="Fechar"><X size={21}/></button>
-      <div className={`modal-media ${project.orientation === "portrait" ? "is-portrait" : "is-landscape"}`} style={{ background: project.cover }}>
-        {project.media && project.format === "video" ? <video src={project.media} poster={project.poster} controls autoPlay playsInline /> :
-          project.media && project.format === "image" ? <img src={project.media} alt={project.title}/> :
+      <div className={`modal-media is-${mediaOrientation}`} style={{ background: project.cover }}>
+        {project.media && project.format === "video" ? <video src={project.media} poster={project.poster} controls autoPlay playsInline onLoadedMetadata={(e) => detectVideoSize(e.currentTarget)} /> :
+          project.media && project.format === "image" ? <img src={project.media} alt={project.title} onLoad={(e) => detectImageSize(e.currentTarget)}/> :
           <div className="empty-media"><span>{project.format === "video" ? "COLE O LINK DO VÍDEO" : "COLE O LINK DA PEÇA"}</span><small>em app/content.ts</small></div>}
       </div>
       <div className="modal-copy"><p>{project.category} · {project.client}</p><h2>{project.title}</h2><span>{project.description}</span></div>

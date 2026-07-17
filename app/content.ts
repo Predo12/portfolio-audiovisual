@@ -14,8 +14,10 @@ export type Project = {
   client: string;
   category: "Gastronomia" | "Imobiliário" | "Saúde" | "Design" | "Eventos";
   format: "video" | "image";
+  orientation?: "portrait" | "landscape";
   cover: string;
   media?: string;
+  poster?: string;
   description: string;
   tag: string;
 };
@@ -26,28 +28,9 @@ export const projects: Project[] = [
     client: "Restaurante / substitua o nome",
     category: "Gastronomia",
     format: "video",
+    orientation: "portrait",
     cover: "linear-gradient(135deg, #6f2218, #d97745 55%, #f6c07c)",
-    media: "/Videos/restaurante-01.mp4",
-    description: "Filme vertical com foco na experiência, textura dos pratos e atmosfera da casa.",
-    tag: "REEL · 00:28"
-  },
-  {
-    title: "Sabor em movimento",
-    client: "Restaurante / substitua o nome",
-    category: "Gastronomia",
-    format: "video",
-    cover: "linear-gradient(135deg, #6f2218, #d97745 55%, #f6c07c)",
-    media: "/Videos/restaurante-02.mp4",
-    description: "Filme vertical com foco na experiência, textura dos pratos e atmosfera da casa.",
-    tag: "REEL · 00:28"
-  },
-  {
-    title: "Sabor em movimento",
-    client: "Restaurante / substitua o nome",
-    category: "Gastronomia",
-    format: "video",
-    cover: "linear-gradient(135deg, #6f2218, #d97745 55%, #f6c07c)",
-    media: "/Videos/restaurante-03.mp4",
+    media: "",
     description: "Filme vertical com foco na experiência, textura dos pratos e atmosfera da casa.",
     tag: "REEL · 00:28"
   },
@@ -56,6 +39,7 @@ export const projects: Project[] = [
     client: "Imobiliária / substitua o nome",
     category: "Imobiliário",
     format: "video",
+    orientation: "landscape",
     cover: "linear-gradient(145deg, #182129, #526875 55%, #b6a28a)",
     media: "",
     description: "Tour dinâmico pensado para apresentar valor antes de apresentar metragem.",
@@ -66,6 +50,7 @@ export const projects: Project[] = [
     client: "Clínica / substitua o nome",
     category: "Saúde",
     format: "video",
+    orientation: "portrait",
     cover: "linear-gradient(140deg, #193e3a, #67a499 58%, #e3d8c8)",
     media: "",
     description: "Conteúdo de autoridade com linguagem humana e estética limpa.",
@@ -86,6 +71,7 @@ export const projects: Project[] = [
     client: "Espaço / substitua o nome",
     category: "Eventos",
     format: "video",
+    orientation: "landscape",
     cover: "linear-gradient(140deg, #35281e, #9a7957 58%, #e7d4b7)",
     media: "",
     description: "Bastidores, montagem e transformação do espaço até a chegada dos convidados.",

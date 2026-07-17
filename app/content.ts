@@ -27,7 +27,7 @@ export const projects: Project[] = [
     category: "Gastronomia",
     format: "video",
     cover: "linear-gradient(135deg, #6f2218, #d97745 55%, #f6c07c)",
-    media: "",
+    media: "D:\Pedro\Projetos\portfolio-audiovisual\public\Videos",
     description: "Filme vertical com foco na experiência, textura dos pratos e atmosfera da casa.",
     tag: "REEL · 00:28"
   },
